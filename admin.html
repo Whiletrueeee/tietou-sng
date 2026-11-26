@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SNG 管理员</title>
+<style>
+  * { box-sizing: border-box; }
+  body { background: #131a19; color: #eef4ef; font: 16px/1.6 system-ui, sans-serif; }
+  main { max-width: 640px; margin: 5vh auto; padding: 0 1rem 2rem; }
+  section, form { padding: 1rem; margin: 1rem 0; border: 1px solid #42554d; border-radius: .6rem; }
+  h1, h2 { margin: 0 0 .5rem; }
+  h2 { font-size: 1.1rem; }
+  input { display: block; margin: .25rem 0 .8rem; padding: .55rem; width: 100%; font: inherit; }
+  button { margin: .3rem .3rem .3rem 0; padding: .4rem .75rem; font: inherit; cursor: pointer; }
+  table { width: 100%; table-layout: fixed; text-align: left; border-collapse: collapse; }
+  th, td { border-bottom: 1px solid #42554d; padding: .4rem; overflow-wrap: anywhere; }
+  a { color: #b3e8cb; }
+  #message { min-height: 1.6em; }
+</style>
+<main>
+  <a href="./">返回首页</a>
+  <h1>SNG 账号管理</h1>
+  <form id="admin-login">
+    <label for="admin-name">管理员账号</label>
+    <input id="admin-name" autocomplete="username" required>
+    <label for="admin-password">管理员密码</label>
+    <input id="admin-password" type="password" autocomplete="current-password" required>
+    <button>登录管理页</button>
+  </form>
+  <div id="manager" hidden>
+    <section>
+      <h2>当前玩家账号</h2>
+      <button id="refresh" type="button">刷新名单</button>
+      <button id="logout" type="button">退出管理</button>
+      <table>
+        <thead><tr><th scope="col">账号</th><th scope="col">密码</th></tr></thead>
+        <tbody id="accounts"></tbody>
+      </table>
+    </section>
+    <form id="save-account">
+      <h2>添加账号或更新密码</h2>
+      <label for="player-name">玩家账号</label>
+      <input id="player-name" autocomplete="off" required>
+      <label for="player-password">玩家密码</label>
+      <input id="player-password" type="password" autocomplete="new-password" minlength="6" maxlength="128" required>
+      <button>保存并刷新名单</button>
+    </form>
+  </div>
+  <p id="message" role="status" aria-live="polite"></p>
+</main>
+<script>
+  const login = document.querySelector("#admin-login");
+  const manager = document.querySelector("#manager");
+  const save = document.querySelector("#save-account");
+  const message = document.querySelector("#message");
+  const accounts = document.querySelector("#accounts");
+  const adminName = document.querySelector("#admin-name");
+  const adminPassword = document.querySelector("#admin-password");
+  const playerName = document.querySelector("#player-name");
+  const playerPassword = document.querySelector("#player-password");
+  const refresh = document.querySelector("#refresh");
+  const logout = document.querySelector("#logout");
+  let authorization = "";
+  let busy = false;
+
+  async function request(credentials, body) {
+    const response = await fetch("./api/admin/accounts", {
+      method: body ? "POST" : "GET",
+      headers: { Authorization: credentials, "Content-Type": "application/json" },
+      body: body ? JSON.stringify(body) : undefined,
+      cache: "no-store"
+    });
+    const result = await response.json().catch(() => null);
+    if (!response.ok || !result) throw new Error(result?.error || "管理功能需要运行 SNG 的 Node 服务。");
+    return result.accounts;
+  }
+
+  function render(list) {
+    accounts.replaceChildren();
+    if (!list.length) {
+      const cell = accounts.insertRow().insertCell();
+      cell.colSpan = 2;
+      cell.textContent = "暂无玩家账号";
+    }
+    for (const account of list) {
+      const row = accounts.insertRow();
+      row.insertCell().textContent = account.username;
+      row.insertCell().textContent = account.password ?? "旧密码不可查看，可在下方重设";
+    }
+  }
+
+  async function run(action) {
+    if (busy) return;
+    busy = true;
+    for (const button of document.querySelectorAll("button")) button.disabled = true;
+    try {
+      await action();
+    } catch (error) {
+      message.textContent = error.message;
+    } finally {
+      busy = false;
+      for (const button of document.querySelectorAll("button")) button.disabled = false;
+    }
+  }
+
+  login.addEventListener("submit", event => {
+    event.preventDefault();
+    run(async () => {
+      const bytes = new TextEncoder().encode(adminName.value.trim() + ":" + adminPassword.value);
+      const credentials = "Basic " + btoa(String.fromCharCode(...bytes));
+      const list = await request(credentials);
+      authorization = credentials;
+      adminPassword.value = "";
+      render(list);
+      login.hidden = true;
+      manager.hidden = false;
+      message.textContent = "已登录管理页。";
+    });
+  });
+
+  save.addEventListener("submit", event => {
+    event.preventDefault();
+    run(async () => {
+      const list = await request(authorization, { username: playerName.value, password: playerPassword.value });
+      playerName.value = "";
+      playerPassword.value = "";
+      render(list);
+      message.textContent = "已保存。玩家刷新主页后可用新版账号名单登录。";
+    });
+  });
+
+  refresh.addEventListener("click", () => run(async () => {
+    render(await request(authorization));
+    message.textContent = "已刷新名单。";
+  }));
+
+  logout.addEventListener("click", () => {
+    authorization = "";
+    accounts.replaceChildren();
+    playerName.value = "";
+    playerPassword.value = "";
+    manager.hidden = true;
+    login.hidden = false;
+    message.textContent = "已退出管理。";
+  });
+</script>
+</html>

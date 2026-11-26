@@ -1,0 +1,785 @@
+{
+  "users": [
+    {
+      "username": "lbj"
+    },
+    {
+      "username": "mxy"
+    }
+  ],
+  "devices": [
+    {
+      "name": "lbj · MacIntel",
+      "time": "11/05 09:57"
+    },
+    {
+      "name": "lbj · MacIntel",
+      "time": "11/05 09:57"
+    },
+    {
+      "name": "mxy · MacIntel",
+      "time": "11/05 10:15"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "spade",
+      "code": "SPADE",
+      "name": "黑桃",
+      "symbol": "♠",
+      "state": "牌局中",
+      "blindMinutes": 8,
+      "startingChips": 10000,
+      "blindStartIndex": 0,
+      "blindLevel": "50 / 100",
+      "maxBlindIndex": 6,
+      "bumpBlindOnElimination": false,
+      "seats": [
+        {
+          "id": "user-lbj",
+          "name": "lbj",
+          "isAi": false,
+          "avatar": null,
+          "aiProfile": null,
+          "seat": 0,
+          "stack": 10550,
+          "folded": false,
+          "chipPile": 0,
+          "eliminated": false,
+          "eliminationPlace": null
+        },
+        {
+          "id": "user-mxy",
+          "name": "mxy",
+          "isAi": false,
+          "avatar": null,
+          "aiProfile": null,
+          "seat": 1,
+          "stack": 9900,
+          "folded": false,
+          "chipPile": 0,
+          "eliminated": false,
+          "eliminationPlace": null
+        },
+        {
+          "id": "ai-2-1793844922557",
+          "name": "小周",
+          "isAi": true,
+          "avatar": "🦊",
+          "aiProfile": {
+            "id": "balanced",
+            "label": "均衡",
+            "tightness": 0.55,
+            "aggression": 0.48,
+            "bluffFrequency": 0.08,
+            "callCuriosity": 0.28,
+            "skill": 0.82
+          },
+          "seat": 2,
+          "stack": 9900,
+          "folded": false,
+          "chipPile": 0,
+          "eliminated": false,
+          "eliminationPlace": null
+        },
+        {
+          "id": "ai-3-1793844924527",
+          "name": "阿峰",
+          "isAi": true,
+          "avatar": "🌙",
+          "aiProfile": {
+            "id": "careful",
+            "label": "谨慎",
+            "tightness": 0.64,
+            "aggression": 0.38,
+            "bluffFrequency": 0.07,
+            "callCuriosity": 0.24,
+            "skill": 0.72
+          },
+          "seat": 3,
+          "stack": 9750,
+          "folded": false,
+          "chipPile": 0,
+          "eliminated": false,
+          "eliminationPlace": null
+        },
+        {
+          "id": "ai-4-1793844926509-56420283a8bb48",
+          "name": "Ken",
+          "isAi": true,
+          "avatar": "🕶️",
+          "aiProfile": {
+            "id": "beginner",
+            "label": "新手",
+            "tightness": 0.5,
+            "aggression": 0.42,
+            "bluffFrequency": 0.12,
+            "callCuriosity": 0.44,
+            "skill": 0.42
+          },
+          "seat": 4,
+          "stack": 10000,
+          "folded": false,
+          "chipPile": 0,
+          "eliminated": false,
+          "eliminationPlace": null
+        },
+        {
+          "id": "ai-5-1793844926509-e284dfd590a238",
+          "name": "小林",
+          "isAi": true,
+          "avatar": "🎲",
+          "aiProfile": {
+            "id": "loose-aggressive",
+            "label": "松凶",
+            "tightness": 0.3,
+            "aggression": 0.78,
+            "bluffFrequency": 0.16,
+            "callCuriosity": 0.36,
+            "skill": 0.62
+          },
+          "seat": 5,
+          "stack": 10000,
+          "folded": false,
+          "chipPile": 0,
+          "eliminated": false,
+          "eliminationPlace": null
+        },
+        {
+          "id": "ai-6-1793844926509-17bd30049a2088",
+          "name": "Nina",
+          "isAi": true,
+          "avatar": "🎩",
+          "aiProfile": {
+            "id": "tight-aggressive",
+            "label": "紧凶",
+            "tightness": 0.72,
+            "aggression": 0.7,
+            "bluffFrequency": 0.06,
+            "callCuriosity": 0.18,
+            "skill": 0.78
+          },
+          "seat": 6,
+          "stack": 9900,
+          "folded": false,
+          "chipPile": 0,
+          "eliminated": false,
+          "eliminationPlace": null
+        },
+        {
+          "id": "ai-7-1793844926509-d43018a1e8646",
+          "name": "Leo",
+          "isAi": true,
+          "avatar": "⚡",
+          "aiProfile": {
+            "id": "careful",
+            "label": "谨慎",
+            "tightness": 0.64,
+            "aggression": 0.38,
+            "bluffFrequency": 0.07,
+            "callCuriosity": 0.24,
+            "skill": 0.72
+          },
+          "seat": 7,
+          "stack": 10000,
+          "folded": false,
+          "chipPile": 0,
+          "eliminated": false,
+          "eliminationPlace": null
+        }
+      ],
+      "host": "lbj",
+      "ready": {
+        "lbj": true,
+        "mxy": true,
+        "小周": true,
+        "阿峰": true,
+        "Ken": true,
+        "小林": true,
+        "Nina": true,
+        "Leo": true
+      },
+      "gameStarted": true,
+      "rounds": [
+        [
+          "阿俊",
+          "小林",
+          "Mia",
+          "Leo",
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken"
+        ],
+        [
+          "小林",
+          "Mia",
+          "Leo",
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊"
+        ],
+        [
+          "Mia",
+          "Leo",
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林"
+        ],
+        [
+          "Leo",
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia"
+        ],
+        [
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia",
+          "Leo"
+        ]
+      ],
+      "eliminationBlindBump": 0,
+      "game": {
+        "phase": "翻牌前",
+        "seats": [
+          {
+            "id": "user-lbj",
+            "name": "lbj",
+            "isAi": false,
+            "avatar": null,
+            "aiProfile": null,
+            "seat": 0,
+            "stack": 10550,
+            "folded": false,
+            "chipPile": 0,
+            "eliminated": false,
+            "eliminationPlace": null,
+            "handStartStack": 10550,
+            "bet": 0,
+            "chipPileAnimatingUntil": 0,
+            "hole": [
+              "7♥",
+              "2♦"
+            ]
+          },
+          {
+            "id": "user-mxy",
+            "name": "mxy",
+            "isAi": false,
+            "avatar": null,
+            "aiProfile": null,
+            "seat": 1,
+            "stack": 9900,
+            "folded": false,
+            "chipPile": 0,
+            "eliminated": false,
+            "eliminationPlace": null,
+            "handStartStack": 9900,
+            "bet": 0,
+            "chipPileAnimatingUntil": 0,
+            "hole": [
+              "9♠",
+              "J♠"
+            ]
+          },
+          {
+            "id": "ai-2-1793844922557",
+            "name": "小周",
+            "isAi": true,
+            "avatar": "🦊",
+            "aiProfile": {
+              "id": "balanced",
+              "label": "均衡",
+              "tightness": 0.55,
+              "aggression": 0.48,
+              "bluffFrequency": 0.08,
+              "callCuriosity": 0.28,
+              "skill": 0.82
+            },
+            "seat": 2,
+            "stack": 9850,
+            "folded": false,
+            "chipPile": 50,
+            "eliminated": false,
+            "eliminationPlace": null,
+            "handStartStack": 9900,
+            "bet": 50,
+            "hole": [
+              "8♠",
+              "6♠"
+            ]
+          },
+          {
+            "id": "ai-3-1793844924527",
+            "name": "阿峰",
+            "isAi": true,
+            "avatar": "🌙",
+            "aiProfile": {
+              "id": "careful",
+              "label": "谨慎",
+              "tightness": 0.64,
+              "aggression": 0.38,
+              "bluffFrequency": 0.07,
+              "callCuriosity": 0.24,
+              "skill": 0.72
+            },
+            "seat": 3,
+            "stack": 9650,
+            "folded": false,
+            "chipPile": 100,
+            "eliminated": false,
+            "eliminationPlace": null,
+            "handStartStack": 9750,
+            "bet": 100,
+            "hole": [
+              "5♥",
+              "10♣"
+            ]
+          },
+          {
+            "id": "ai-4-1793844926509-56420283a8bb48",
+            "name": "Ken",
+            "isAi": true,
+            "avatar": "🕶️",
+            "aiProfile": {
+              "id": "beginner",
+              "label": "新手",
+              "tightness": 0.5,
+              "aggression": 0.42,
+              "bluffFrequency": 0.12,
+              "callCuriosity": 0.44,
+              "skill": 0.42
+            },
+            "seat": 4,
+            "stack": 10000,
+            "folded": true,
+            "chipPile": 0,
+            "eliminated": false,
+            "eliminationPlace": null,
+            "handStartStack": 10000,
+            "bet": 0,
+            "chipPileAnimatingUntil": 0,
+            "hole": [
+              "3♠",
+              "9♥"
+            ],
+            "lastAction": "fold"
+          },
+          {
+            "id": "ai-5-1793844926509-e284dfd590a238",
+            "name": "小林",
+            "isAi": true,
+            "avatar": "🎲",
+            "aiProfile": {
+              "id": "loose-aggressive",
+              "label": "松凶",
+              "tightness": 0.3,
+              "aggression": 0.78,
+              "bluffFrequency": 0.16,
+              "callCuriosity": 0.36,
+              "skill": 0.62
+            },
+            "seat": 5,
+            "stack": 10000,
+            "folded": true,
+            "chipPile": 0,
+            "eliminated": false,
+            "eliminationPlace": null,
+            "handStartStack": 10000,
+            "bet": 0,
+            "chipPileAnimatingUntil": 0,
+            "hole": [
+              "Q♣",
+              "3♦"
+            ],
+            "lastAction": "fold"
+          },
+          {
+            "id": "ai-6-1793844926509-17bd30049a2088",
+            "name": "Nina",
+            "isAi": true,
+            "avatar": "🎩",
+            "aiProfile": {
+              "id": "tight-aggressive",
+              "label": "紧凶",
+              "tightness": 0.72,
+              "aggression": 0.7,
+              "bluffFrequency": 0.06,
+              "callCuriosity": 0.18,
+              "skill": 0.78
+            },
+            "seat": 6,
+            "stack": 9900,
+            "folded": true,
+            "chipPile": 0,
+            "eliminated": false,
+            "eliminationPlace": null,
+            "handStartStack": 9900,
+            "bet": 0,
+            "chipPileAnimatingUntil": 0,
+            "hole": [
+              "J♥",
+              "5♦"
+            ],
+            "lastAction": "fold"
+          },
+          {
+            "id": "ai-7-1793844926509-d43018a1e8646",
+            "name": "Leo",
+            "isAi": true,
+            "avatar": "⚡",
+            "aiProfile": {
+              "id": "careful",
+              "label": "谨慎",
+              "tightness": 0.64,
+              "aggression": 0.38,
+              "bluffFrequency": 0.07,
+              "callCuriosity": 0.24,
+              "skill": 0.72
+            },
+            "seat": 7,
+            "stack": 10000,
+            "folded": true,
+            "chipPile": 0,
+            "eliminated": false,
+            "eliminationPlace": null,
+            "handStartStack": 10000,
+            "bet": 0,
+            "chipPileAnimatingUntil": 0,
+            "hole": [
+              "J♦",
+              "2♣"
+            ],
+            "lastAction": "fold"
+          }
+        ],
+        "pot": 150,
+        "deck": [
+          "4♣",
+          "4♥",
+          "Q♠",
+          "7♦",
+          "A♦",
+          "7♠",
+          "K♦",
+          "3♥",
+          "5♠",
+          "2♠",
+          "4♠",
+          "3♣",
+          "9♣",
+          "10♠",
+          "4♦",
+          "7♣",
+          "A♠",
+          "8♣",
+          "J♣",
+          "K♣",
+          "A♥",
+          "A♣",
+          "9♦",
+          "6♣",
+          "10♥",
+          "2♥",
+          "Q♦",
+          "8♦",
+          "Q♥",
+          "8♥",
+          "K♥",
+          "10♦",
+          "6♦",
+          "K♠",
+          "5♣",
+          "6♥"
+        ],
+        "handOver": false,
+        "actedCount": 4,
+        "actedSeats": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "currentBet": 100,
+        "dealerIndex": 1,
+        "smallBlindIndex": 2,
+        "bigBlindIndex": 3,
+        "currentIndex": 0,
+        "blindIndex": 0,
+        "community": [],
+        "handNo": 2,
+        "log": [
+          "第 2 手开始",
+          "小周 下小盲 50",
+          "阿峰 下大盲 100",
+          "Ken 弃牌",
+          "小林 弃牌",
+          "Nina 弃牌",
+          "Leo 弃牌"
+        ]
+      },
+      "aiNameCooldown": [],
+      "eliminatedPlayers": {},
+      "gameStartedAt": 1793844937621,
+      "blindLevelStartedAt": 1793844937621
+    },
+    {
+      "id": "heart",
+      "code": "HEART",
+      "name": "红桃",
+      "symbol": "♥",
+      "state": "报名中",
+      "blindMinutes": 10,
+      "startingChips": 10000,
+      "blindStartIndex": 0,
+      "blindLevel": "50 / 100",
+      "maxBlindIndex": 6,
+      "bumpBlindOnElimination": false,
+      "seats": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "host": "",
+      "ready": {},
+      "gameStarted": false,
+      "rounds": [
+        [
+          "小林",
+          "Mia",
+          "Leo",
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊"
+        ],
+        [
+          "Mia",
+          "Leo",
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林"
+        ],
+        [
+          "Leo",
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia"
+        ],
+        [
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia",
+          "Leo"
+        ],
+        [
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia",
+          "Leo",
+          "小周"
+        ]
+      ],
+      "eliminationBlindBump": 0,
+      "game": null,
+      "aiNameCooldown": []
+    },
+    {
+      "id": "club",
+      "code": "CLUB",
+      "name": "梅花",
+      "symbol": "♣",
+      "state": "等待开局",
+      "blindMinutes": 12,
+      "startingChips": 20000,
+      "blindStartIndex": 2,
+      "blindLevel": "100 / 200",
+      "maxBlindIndex": 6,
+      "bumpBlindOnElimination": false,
+      "seats": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "host": "",
+      "ready": {},
+      "gameStarted": false,
+      "rounds": [
+        [
+          "Mia",
+          "Leo",
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林"
+        ],
+        [
+          "Leo",
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia"
+        ],
+        [
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia",
+          "Leo"
+        ],
+        [
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia",
+          "Leo",
+          "小周"
+        ],
+        [
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia",
+          "Leo",
+          "小周",
+          "Nina"
+        ]
+      ],
+      "eliminationBlindBump": 0,
+      "game": null,
+      "aiNameCooldown": []
+    },
+    {
+      "id": "diamond",
+      "code": "DIAMOND",
+      "name": "方片",
+      "symbol": "♦",
+      "state": "等待开局",
+      "blindMinutes": 15,
+      "startingChips": 15000,
+      "blindStartIndex": 1,
+      "blindLevel": "75 / 150",
+      "maxBlindIndex": 6,
+      "bumpBlindOnElimination": false,
+      "seats": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "host": "",
+      "ready": {},
+      "gameStarted": false,
+      "rounds": [
+        [
+          "Leo",
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia"
+        ],
+        [
+          "小周",
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia",
+          "Leo"
+        ],
+        [
+          "Nina",
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia",
+          "Leo",
+          "小周"
+        ],
+        [
+          "阿峰",
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia",
+          "Leo",
+          "小周",
+          "Nina"
+        ],
+        [
+          "Ken",
+          "阿俊",
+          "小林",
+          "Mia",
+          "Leo",
+          "小周",
+          "Nina",
+          "阿峰"
+        ]
+      ],
+      "eliminationBlindBump": 0,
+      "game": null,
+      "aiNameCooldown": []
+    }
+  ],
+  "updatedAt": 1793845044776
+}

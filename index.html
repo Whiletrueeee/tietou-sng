@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>铁头SNG竞技</title>
+    <link rel="stylesheet" href="./styles.css?v=20261104-account-auth" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="auth-panel" id="authPanel" aria-labelledby="authTitle">
+        <div class="brand-lockup">
+          <div class="chip-mark" aria-hidden="true">SNG</div>
+          <div>
+            <p class="eyebrow">Texas Hold'em Sit & Go</p>
+            <h1 id="authTitle">铁头SNG竞技</h1>
+          </div>
+        </div>
+
+        <div class="login-card">
+          <div class="form-head">
+            <div class="auth-mode-switch" role="tablist" aria-label="账号操作">
+              <button class="auth-mode-button is-active" id="loginModeBtn" type="button" data-auth-mode="login">登录</button>
+              <button class="auth-mode-button" id="registerModeBtn" type="button" data-auth-mode="register">注册账号</button>
+            </div>
+            <h2 id="authFormTitle">账号登录</h2>
+            <p id="authFormHint">使用管理员提供的账号和密码登录。</p>
+          </div>
+
+          <form id="loginForm" method="post">
+            <label>
+              <span>账号</span>
+              <input id="username" name="username" autocomplete="username" placeholder="例如：阿俊" required />
+            </label>
+
+            <label>
+              <span>密码</span>
+              <input id="password" name="password" type="password" autocomplete="current-password" placeholder="输入账号密码" required />
+            </label>
+
+            <label class="inline-check">
+              <input id="rememberMe" type="checkbox" checked />
+              <span>在本设备保存账号名</span>
+            </label>
+
+            <button class="primary-action" id="authSubmitBtn" type="submit">登录并进入大厅</button>
+            <p class="auth-message" id="authMessage" role="status" aria-live="polite"></p>
+
+            <div class="saved-users" id="savedUsers" aria-live="polite"></div>
+          </form>
+          <button class="ghost-action" id="backToLoginBtn" type="button" hidden>返回登录</button>
+        </div>
+      </section>
+
+      <section class="dashboard is-hidden" id="dashboard" aria-label="SNG 房间大厅">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Private SNG Room Manager</p>
+            <h1 id="dashboardTitle">四个花色房间</h1>
+          </div>
+          <div class="session-strip">
+            <span id="activeUser">未登录</span>
+            <button class="ghost-action" id="logoutBtn" type="button">退出</button>
+          </div>
+        </header>
+
+        <section class="lobby-view" id="lobbyView" aria-label="房间列表">
+          <div class="room-list" id="roomList"></div>
+        </section>
+
+        <section class="room-detail is-hidden" id="roomDetail" aria-label="房间详情">
+          <button class="back-action" id="backToLobbyBtn" type="button">返回房间列表</button>
+          <div class="main-grid" id="roomGrid">
+          <section class="room-board" aria-labelledby="roomName">
+            <div class="room-title-row">
+              <div>
+                <p class="eyebrow" id="roomCode">SPADE</p>
+                <h2 id="roomName">黑桃</h2>
+                <p class="host-line" id="hostLine">房主：待定</p>
+              </div>
+              <div class="room-actions">
+                <div class="room-state" id="roomState">等待开局</div>
+                <button class="primary-action compact-action" id="enterGameBtn" type="button">进入游戏</button>
+                <button class="ghost-action compact-action" id="fillAiBtn" type="button">一键添加 AI</button>
+              </div>
+            </div>
+
+            <div class="table-felt" aria-label="牌桌概览">
+              <div id="tableSeats"></div>
+              <div class="pot">
+                <span>当前级别</span>
+                <strong id="blindLevel">50 / 100</strong>
+                <small id="nextBlind">08:00 后涨盲</small>
+                <small id="seatHint">点击空位选择座位</small>
+              </div>
+            </div>
+
+            <div class="quick-stats">
+              <div>
+                <span>初始筹码</span>
+                <strong id="statChips">10,000</strong>
+              </div>
+              <div>
+                <span>涨盲时间</span>
+                <strong id="statBlindTime">8 分钟</strong>
+              </div>
+              <div>
+                <span>最近冠军</span>
+                <strong id="statWinner">阿俊</strong>
+              </div>
+            </div>
+          </section>
+
+          <aside class="settings-panel" aria-labelledby="settingsTitle">
+            <h2 id="settingsTitle">房间设置</h2>
+            <p class="permission-note" id="permissionNote">只有房主可以修改房间设置。</p>
+
+            <label>
+              <span>涨盲时间</span>
+              <select id="blindTime">
+                <option value="5">5 分钟</option>
+                <option value="8">8 分钟</option>
+                <option value="10">10 分钟</option>
+                <option value="12">12 分钟</option>
+                <option value="15">15 分钟</option>
+              </select>
+            </label>
+
+            <label>
+              <span>初始筹码量</span>
+              <input id="startingChips" type="number" min="1000" max="100000" step="500" />
+            </label>
+
+            <label>
+              <span>起始盲注等级</span>
+              <select id="blindStartLevel">
+                <option value="0">50 / 100</option>
+                <option value="1">75 / 150</option>
+                <option value="2">100 / 200</option>
+                <option value="3">150 / 300</option>
+                <option value="4">200 / 400</option>
+                <option value="5">300 / 600</option>
+                <option value="6">500 / 1,000</option>
+              </select>
+            </label>
+
+            <label>
+              <span>最大盲注等级</span>
+              <select id="maxBlindLevel">
+                <option value="0">50 / 100</option>
+                <option value="1">75 / 150</option>
+                <option value="2">100 / 200</option>
+                <option value="3">150 / 300</option>
+                <option value="4">200 / 400</option>
+                <option value="5">300 / 600</option>
+                <option value="6">500 / 1,000</option>
+              </select>
+            </label>
+
+            <label class="inline-check setting-check">
+              <input id="bumpBlindOnElimination" type="checkbox" />
+              <span>玩家淘汰时盲注翻倍</span>
+            </label>
+
+            <button class="primary-action" id="saveRoomBtn" type="button">保存房间设置</button>
+            <p class="save-note" id="saveNote" role="status"></p>
+
+            <div class="device-box">
+              <h3>已保存登录设备</h3>
+              <ul id="deviceList"></ul>
+            </div>
+          </aside>
+          </div>
+
+          <section class="ready-panel" aria-labelledby="readyTitle">
+            <div>
+              <p class="eyebrow">Ready</p>
+              <h2 id="readyTitle">开局准备</h2>
+              <p id="readySummary">请选择座位后准备。</p>
+            </div>
+            <div class="ready-actions">
+              <button class="ghost-action" id="toggleReadyBtn" type="button">准备</button>
+              <button class="ghost-action danger-action" id="closeRoomGameBtn" type="button">关闭牌局</button>
+              <button class="primary-action compact-action" id="startGameBtn" type="button">房主开局</button>
+            </div>
+          </section>
+
+          <section class="ranking-panel" aria-labelledby="rankingTitle">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">History</p>
+              <h2 id="rankingTitle">过去 5 轮排名</h2>
+            </div>
+            <div class="history-actions">
+              <button class="ghost-action" id="clearRoundsBtn" type="button">清空排名记录</button>
+              <button class="ghost-action" id="addRoundBtn" type="button">模拟新增一轮</button>
+            </div>
+          </div>
+          <div class="ranking-grid" id="rankingGrid"></div>
+          </section>
+        </section>
+
+        <section class="game-view is-hidden" id="gameView" aria-label="游戏界面">
+          <div class="game-topbar">
+            <button class="back-action" id="backToRoomBtn" type="button">返回房间</button>
+            <button class="ghost-action danger-action" id="closeGameBtn" type="button">关闭牌局</button>
+            <div class="game-clocks" aria-label="牌局计时">
+              <div class="game-clock">
+                <span>牌局时长</span>
+                <strong id="gameElapsedTime">00:00</strong>
+              </div>
+              <div class="game-clock">
+                <span>涨盲倒计时</span>
+                <strong id="blindCountdown">00:00</strong>
+              </div>
+            </div>
+            <div class="game-status">
+              <strong id="gameBlindLevel">50 / 100</strong>
+            </div>
+          </div>
+
+          <section class="game-table" aria-label="牌局牌桌">
+            <div class="game-pot">
+              <span>底池</span>
+              <strong id="gamePot">1,650</strong>
+            </div>
+            <div class="community-cards" id="communityCards" aria-label="公共牌"></div>
+            <div id="gameSeats"></div>
+            <div class="table-hand" id="tableHand" aria-label="我的手牌"></div>
+            <div class="chip-animation-layer" id="chipAnimationLayer" aria-hidden="true"></div>
+          </section>
+
+          <section class="player-console" aria-label="玩家操作区">
+            <div class="turn-panel">
+              <span id="turnLabel">等待行动</span>
+              <strong id="playerStack">10,000</strong>
+              <div class="timer-track" aria-label="操作计时条"><div id="turnTimerBar"></div></div>
+            </div>
+            <div class="action-bar">
+              <button class="ghost-action" id="foldBtn" type="button">弃牌</button>
+              <button class="ghost-action" id="callBtn" type="button">跟注</button>
+              <button class="primary-action compact-action" id="raiseBtn" type="button">加注</button>
+              <button class="ghost-action" id="longThinkBtn" type="button">长考</button>
+              <button class="ghost-action show-hand-action is-hidden" id="showHandBtn" type="button">展示手牌</button>
+            </div>
+            <div class="raise-menu is-hidden" id="raiseMenu" aria-label="加注菜单">
+              <div class="raise-presets">
+                <button type="button" data-raise-preset="third">1/3 底池</button>
+                <button type="button" data-raise-preset="half">1/2 底池</button>
+                <button type="button" data-raise-preset="fifth">1/5 底池</button>
+                <button type="button" data-raise-preset="pot">满池</button>
+                <button type="button" data-raise-preset="allin">All in</button>
+              </div>
+              <div class="raise-slider-box">
+                <strong id="raiseValue">200</strong>
+                <input id="raiseSlider" type="range" min="0" max="100" step="50" value="200" aria-label="加注金额" />
+              </div>
+            </div>
+          </section>
+
+          <button class="equity-toggle" id="equityToggleBtn" type="button">胜率计算</button>
+          <button class="log-toggle" id="logToggleBtn" type="button">本手记录</button>
+          <aside class="equity-drawer is-hidden" id="equityDrawer" aria-label="胜率计算">
+            <div class="hand-log-head">
+              <strong>胜率计算</strong>
+              <button class="ghost-action" id="closeEquityBtn" type="button">收起</button>
+            </div>
+            <div class="equity-card-row" id="equityCards">
+              <button class="equity-card-slot is-selected" type="button" data-equity-card="0">? ?</button>
+              <button class="equity-card-slot" type="button" data-equity-card="1">? ?</button>
+            </div>
+            <div class="picker-block">
+              <span>花色</span>
+              <div class="picker-grid suit-picker" id="equitySuitPicker"></div>
+            </div>
+            <div class="picker-block">
+              <span>点数</span>
+              <div class="picker-grid rank-picker" id="equityRankPicker"></div>
+            </div>
+            <button class="primary-action compact-action" id="calculateEquityBtn" type="button">计算胜率</button>
+            <div class="equity-result" id="equityResult">选择对手可能手牌后计算。</div>
+          </aside>
+          <aside class="hand-log-drawer is-hidden" id="handLogDrawer" aria-label="本手过程记录">
+            <div class="hand-log-head">
+              <strong>本手过程</strong>
+              <button class="ghost-action" id="closeLogBtn" type="button">收起</button>
+            </div>
+            <div class="action-log" id="actionLog" aria-live="polite"></div>
+          </aside>
+        </section>
+      </section>
+
+      <div class="modal is-hidden" id="rankingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-panel">
+          <div class="section-head">
+            <h2 id="modalTitle">本轮完整排名</h2>
+            <button class="ghost-action" id="closeModalBtn" type="button">关闭</button>
+          </div>
+          <div class="modal-rank-list" id="modalRankList"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer style="padding: 16px; text-align: right">
+      <a href="./admin.html" style="font-size: 12px; color: var(--muted)">管理员入口</a>
+    </footer>
+    <script src="./login-accounts.js"></script>
+    <script src="./app.js?v=20261126-managed-accounts"></script>
+  </body>
+</html>

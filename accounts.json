@@ -1,0 +1,16 @@
+[
+  {
+    "username": "lbj",
+    "salt": "21a3ba45638e73b46e7e0e8a79af3362",
+    "passwordHash": "2ad6f60d5ff0bf85060dc7663573a095644b638a36c944b43d96bcaeba6c0f7e85bcecc0475b102127681479340a587250b91d265558658f9519c8fed25c0383",
+    "createdAt": "2026-11-05T01:57:42.113Z",
+    "lastLoginAt": "2026-11-05T01:57:54.254Z"
+  },
+  {
+    "username": "mxy",
+    "salt": "5b9f7758f0eaab47357518a893cbad7f",
+    "passwordHash": "d3a069a611c3908987364c0445edcb2fab83a2781715f9d6b9576dd4697da6d5c322d1634deeb84eac66d435669cc96405ac1800661b1c9da2fef149fb95eb92",
+    "createdAt": "2026-11-05T02:15:09.668Z",
+    "lastLoginAt": null
+  }
+]
